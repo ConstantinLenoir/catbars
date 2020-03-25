@@ -1,6 +1,6 @@
 Catbars
 ########
-**Simple bars, four features**
+*Simple bars, four features*
 
 Introduction
 --------------
@@ -33,7 +33,7 @@ png format (by specifying the keyword argument *file_name* or by calling
 
 Catbars doesn't support grouped bar charts and stacked bar charts.
 
-***
+
 License
 --------
 MIT
