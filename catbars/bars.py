@@ -381,7 +381,7 @@ class Bars:
         if self.xlabel is not None:
             self._manage_xlabel(min_tick_y)
         else:
-            delta_y0 = abs(self._y0 - min_tick_y) + self.conf['pad']
+            delta_y0 = abs(self._y0 - min_tick_y)
             self._y0 = self._y0 + delta_y0
             self._height = self._height - delta_y0
             self._set_position()
