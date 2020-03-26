@@ -11,7 +11,7 @@ setuptools.setup(
     description="A plotting library for making horizontal bar charts.",
     long_description=long_description,
     long_description_content_type="text/x-rst",
-    url="",
+    url="https://github.com/ConstantinLenoir/catbars",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
