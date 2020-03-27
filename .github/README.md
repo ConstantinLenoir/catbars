@@ -2,6 +2,35 @@
 
 *Simple bars, four features*
 
+##  Example
+
+```python
+import pandas as pd
+from catbars import Bars
+import catbars.cac40
+
+df = pd.DataFrame.from_dict(catbars.cac40.data, 
+                            orient = 'index', 
+                            columns = ['closing_price', 'cap', 'sector'])
+
+Bars(df['cap'],
+     right_labels = df.index,
+     left_labels = 'rank',
+     colors = df['sector'],
+     sort = True,
+     line_dic = {'number' : df['cap'].median(),
+                 'color' : 'black',
+                 'label' : 'Median'},
+     title = 'Companies sorted by capitalization',
+     legend_title = 'Sectors',
+     xlabel = 'Capitalization in euros\n{}'.format(catbars.cac40.date),
+     ylabel = 'Company names',
+     figsize = (7,10))
+```
+
+
+<img src="readme_figure.png" width="600" alt="A Catbars plot.">
+
 
 ## Introduction
 
@@ -35,34 +64,13 @@ png format (by specifying the keyword argument ```file_name``` or by calling
 Catbars doesn't support grouped bar charts and stacked bar charts.
 
 
-## Code example
+## Installation
 
 ```python
-import pandas as pd
-from catbars import Bars
-import catbars.cac40
 
-df = pd.DataFrame.from_dict(catbars.cac40.data, 
-                            orient = 'index', 
-                            columns = ['closing_price', 'cap', 'sector'])
+pip install catbars
 
-Bars(df['cap'],
-     right_labels = df.index,
-     left_labels = 'rank',
-     colors = df['sector'],
-     sort = True,
-     line_dic = {'number' : df['cap'].median(),
-                 'color' : 'black',
-                 'label' : 'Median'},
-     title = 'Companies sorted by capitalization',
-     legend_title = 'Sectors',
-     xlabel = 'Capitalization in euros\n{}'.format(catbars.cac40.date),
-     ylabel = 'Company names',
-     figsize = (7,10))
 ```
-
-[Resulting chart.](../documentation/source/images/readme_figure.png)
-
 
 ## Notebooks to explore Catbars
 
