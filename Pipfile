@@ -11,6 +11,7 @@ notebook = "*"
 sphinx = "*"
 pandas = "*"
 readme-renderer = "*"
+twine = "*"
 
 [requires]
 python_version = "3.8"
