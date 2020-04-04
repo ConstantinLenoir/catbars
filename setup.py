@@ -5,7 +5,7 @@ with open("README.rst", "r") as f:
 
 setuptools.setup(
     name="catbars",
-    version="1.0.0",
+    version="1.0.1",
     author="Constantin Yves Lenoir",
     author_email="constantinlenoir@gmail.com",
     description="A plotting library for making horizontal bar charts.",
@@ -19,5 +19,5 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     install_requires=['matplotlib', 'numpy'],
-    python_requires='>=3.8',
+    python_requires='>=3.0',
 )

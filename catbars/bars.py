@@ -292,7 +292,9 @@ class Bars:
             if self.data.spread > 1 or self.data.maximum > 1e6:
                 self.ax.set(xscale = 'log')
         else:
-            formatter = matplotlib.ticker.FuncFormatter(self.float_formatter)
+            default_formatter = self.ax.get_xaxis().get_major_formatter()
+            custom_formatter = self.build_formatter(default_formatter)
+            formatter = matplotlib.ticker.FuncFormatter(custom_formatter)
             self.ax.get_xaxis().set_major_formatter(formatter)
         
         
@@ -815,20 +817,23 @@ right_label_max_it {} has been hit.
         return visible_labels
 
 
-    def float_formatter(self, x, pos):
+    def build_formatter(self, default_formatter):
         """
         Custom scientific notation.
         """
-        if x > 1e6 or x < 1e-3:
-            text = '{:.1e}'.format(x)
-            n, e = text.split('e')
-            if float(n) == 0:
-                return 0
-            e = '{'+ e.lstrip('0+') + '}'
-            label = r'${} \times 10^{}$'.format(n, e)
-            return label
-        else:
-            return x
+        def f(default_f, x, pos):
+            if x > 1e6 or x < 1e-3:
+                text = '{:.1e}'.format(x)
+                n, e = text.split('e')
+                if float(n) == 0:
+                    return 0
+                e = '{'+ e.lstrip('0+') + '}'
+                label = r'${} \times 10^{}$'.format(n, e)
+                return label
+            else:
+                return default_f(x, pos)
+        
+        return partial(f, default_formatter)
 
 
     
